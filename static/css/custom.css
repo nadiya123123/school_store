@@ -1,0 +1,24 @@
+/*** home page***/
+h1 {
+    text-align : center;
+}
+.my_banner{
+    width:100%;
+    height:auto;
+    padding:5px;
+}
+/*** navbar page***/
+
+.navbar-nav .nav-link {
+  color:black ;
+}
+.my_icon{
+  color:black ;
+}
+.bg-body-tertiary {
+  background-color:#D1CFCF;
+}
+/*** register page***/
+.my_regg_form{
+text-align:center;
+}

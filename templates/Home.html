@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+
+Welcome to our school store..!
+
+{% endblock %}
+{% block title %}
+
+SCHOOL STORE
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+    <h1>Welcome to the School Store</h1>
+</div>
+<div class="container">
+    <img class="my_banner" src="{% static 'img/banner.jpg' %}" alt="banner" >
+</div>
+<div class="container text-right">
+  <br>
+  <a class="btn btn-primary" href="{% url 'school_store:login' %}">Login</a>
+</div>
+
+{% endblock %}
