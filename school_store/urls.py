@@ -10,4 +10,8 @@ urlpatterns = [
     path('new_page/', views.new_page, name='new_page'),
     path('form/', views.form, name='form'),
     path('logout/', views.logout_view, name='logout'),
+
+
+
+    path('ajax/load-course/', views.load_course, name='ajax_load_course'),
 ]

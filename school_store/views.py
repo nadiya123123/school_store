@@ -44,16 +44,21 @@ def new_page(request):
     return render(request, "new_page.html")
 
 def form(request):
+    form = FormDataForm()
     if request.method == 'POST':
-        form=FormDataForm(request.POST or None,request.FILES)
+        form=FormDataForm(request.POST)
         if form.is_valid():
             form.save()
             messages.info(request, "order confirmed")
-            return redirect('school_store:home',{'courses': courses})
-    else:
-        form = FormDataForm()
+            return redirect('school_store:home')
     return render(request,"form.html",{'form':form})
 
 def logout_view(request):
     logout(request)
     return redirect('school_store:home')
+
+
+def load_course(request):
+    department_id = request.GET.get('department_id')
+    courses = Course.objects.filter(department_id=department_id).all()
+    return render(request, 'course_dropdown_list_options.html', {'courses': courses})

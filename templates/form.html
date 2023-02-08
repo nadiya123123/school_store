@@ -2,17 +2,33 @@
 {% load static %}
 
 {% block content %}
-<div style="background-color:#F1FAFA;">
-<br>
-<div class="container">
-<form method="post" enctype="multipart/form-data">
-    <br>
+<form method="post" id="personForm" data-course-url="{% url 'school_store:ajax_load_course' %}" novalidate>
     {% csrf_token %}
-    {{form.as_p}}
-    <input class="btn btn-success" type="submit">
-    <a class="btn btn-primary" href="{% url 'school_store:logout' %}">Logout</a>
+    <table>
+      {{ form.as_table }}
+    </table>
+    <button type="submit">Save</button>
+  </form>
 
-</form>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_department").change(function () {
+      const url = $("#personForm").attr("data-course-url");
+      const departmentId = $(this).val();
+
+      $.ajax({
+        url: url,
+        data: {
+          'department_id': departmentId
+        },
+        success: function (data) {
+          $("#id_course").html(data);
+        }
+      });
+
+    });
+  </script>
+
 </div>
  {%for msg in messages%}
  {{msg}}
