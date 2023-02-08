@@ -10,6 +10,7 @@ class FormDataForm(forms.ModelForm):
 
         widgets = {
             'dob': forms.TextInput(attrs={'type': 'date'}),
+            'materials': forms.CheckboxSelectMultiple(),
         }
 
         def __init__(self, *args, **kwargs):

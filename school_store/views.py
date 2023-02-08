@@ -27,6 +27,12 @@ def register(request):
         username = request.POST['username']
         password = request.POST['password']
         password1 = request.POST['password1']
+
+
+        if not username or not password or not password1:
+            messages.error(request, "Your registration is not completed")
+            return redirect('school_store:register')
+
         if password == password1:
             if User.objects.filter(username=username).exists():
                 messages.info(request, "Username already exists")
